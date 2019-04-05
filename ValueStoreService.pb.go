@@ -69,7 +69,7 @@ func (m *StoreValueRequest) GetValue() string {
 	return ""
 }
 
-type ValueResponse struct {
+type StoreValueResponse struct {
 	Path                 string   `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
 	CreatedAt            string   `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	Version              int32    `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
@@ -78,46 +78,46 @@ type ValueResponse struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ValueResponse) Reset()         { *m = ValueResponse{} }
-func (m *ValueResponse) String() string { return proto.CompactTextString(m) }
-func (*ValueResponse) ProtoMessage()    {}
-func (*ValueResponse) Descriptor() ([]byte, []int) {
+func (m *StoreValueResponse) Reset()         { *m = StoreValueResponse{} }
+func (m *StoreValueResponse) String() string { return proto.CompactTextString(m) }
+func (*StoreValueResponse) ProtoMessage()    {}
+func (*StoreValueResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbce9d90ab82b7ce, []int{1}
 }
 
-func (m *ValueResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ValueResponse.Unmarshal(m, b)
+func (m *StoreValueResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StoreValueResponse.Unmarshal(m, b)
 }
-func (m *ValueResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ValueResponse.Marshal(b, m, deterministic)
+func (m *StoreValueResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StoreValueResponse.Marshal(b, m, deterministic)
 }
-func (m *ValueResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ValueResponse.Merge(m, src)
+func (m *StoreValueResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StoreValueResponse.Merge(m, src)
 }
-func (m *ValueResponse) XXX_Size() int {
-	return xxx_messageInfo_ValueResponse.Size(m)
+func (m *StoreValueResponse) XXX_Size() int {
+	return xxx_messageInfo_StoreValueResponse.Size(m)
 }
-func (m *ValueResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ValueResponse.DiscardUnknown(m)
+func (m *StoreValueResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_StoreValueResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ValueResponse proto.InternalMessageInfo
+var xxx_messageInfo_StoreValueResponse proto.InternalMessageInfo
 
-func (m *ValueResponse) GetPath() string {
+func (m *StoreValueResponse) GetPath() string {
 	if m != nil {
 		return m.Path
 	}
 	return ""
 }
 
-func (m *ValueResponse) GetCreatedAt() string {
+func (m *StoreValueResponse) GetCreatedAt() string {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return ""
 }
 
-func (m *ValueResponse) GetVersion() int32 {
+func (m *StoreValueResponse) GetVersion() int32 {
 	if m != nil {
 		return m.Version
 	}
@@ -171,33 +171,74 @@ func (m *GetValueRequest) GetVersion() int32 {
 	return 0
 }
 
+type GetValueResponse struct {
+	Value                string   `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetValueResponse) Reset()         { *m = GetValueResponse{} }
+func (m *GetValueResponse) String() string { return proto.CompactTextString(m) }
+func (*GetValueResponse) ProtoMessage()    {}
+func (*GetValueResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fbce9d90ab82b7ce, []int{3}
+}
+
+func (m *GetValueResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetValueResponse.Unmarshal(m, b)
+}
+func (m *GetValueResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetValueResponse.Marshal(b, m, deterministic)
+}
+func (m *GetValueResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetValueResponse.Merge(m, src)
+}
+func (m *GetValueResponse) XXX_Size() int {
+	return xxx_messageInfo_GetValueResponse.Size(m)
+}
+func (m *GetValueResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetValueResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetValueResponse proto.InternalMessageInfo
+
+func (m *GetValueResponse) GetValue() string {
+	if m != nil {
+		return m.Value
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*StoreValueRequest)(nil), "main.StoreValueRequest")
-	proto.RegisterType((*ValueResponse)(nil), "main.ValueResponse")
+	proto.RegisterType((*StoreValueResponse)(nil), "main.StoreValueResponse")
 	proto.RegisterType((*GetValueRequest)(nil), "main.GetValueRequest")
+	proto.RegisterType((*GetValueResponse)(nil), "main.GetValueResponse")
 }
 
 func init() { proto.RegisterFile("ValueStoreService.proto", fileDescriptor_fbce9d90ab82b7ce) }
 
 var fileDescriptor_fbce9d90ab82b7ce = []byte{
-	// 259 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x0f, 0x4b, 0xcc, 0x29,
-	0x4d, 0x0d, 0x2e, 0xc9, 0x2f, 0x4a, 0x0d, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0xd5, 0x2b, 0x28,
-	0xca, 0x2f, 0xc9, 0x17, 0x62, 0xc9, 0x4d, 0xcc, 0xcc, 0x53, 0xb2, 0xe5, 0x12, 0x04, 0xcb, 0x81,
-	0x55, 0x05, 0xa5, 0x16, 0x96, 0xa6, 0x16, 0x97, 0x08, 0x09, 0x71, 0xb1, 0x14, 0x24, 0x96, 0x64,
-	0x48, 0x30, 0x2a, 0x30, 0x6a, 0x70, 0x06, 0x81, 0xd9, 0x42, 0x22, 0x5c, 0xac, 0x65, 0x20, 0x35,
-	0x12, 0x4c, 0x60, 0x41, 0x08, 0x47, 0x29, 0x86, 0x8b, 0x17, 0xaa, 0xb3, 0xb8, 0x20, 0x3f, 0xaf,
-	0x38, 0x15, 0xab, 0x56, 0x59, 0x2e, 0xae, 0xe4, 0xa2, 0xd4, 0xc4, 0x92, 0xd4, 0x94, 0xf8, 0xc4,
-	0x12, 0xa8, 0x7e, 0x4e, 0xa8, 0x88, 0x63, 0x89, 0x90, 0x04, 0x17, 0x7b, 0x59, 0x6a, 0x51, 0x71,
-	0x66, 0x7e, 0x9e, 0x04, 0xb3, 0x02, 0xa3, 0x06, 0x6b, 0x10, 0x8c, 0xab, 0x64, 0xcf, 0xc5, 0xef,
-	0x9e, 0x5a, 0x42, 0xd0, 0x69, 0x48, 0x06, 0x30, 0xa1, 0x18, 0x60, 0xd4, 0xc2, 0xc8, 0xc5, 0x85,
-	0xf0, 0xbf, 0x90, 0x0d, 0x17, 0x17, 0xc2, 0xb3, 0x42, 0xe2, 0x7a, 0xa0, 0x10, 0xd0, 0xc3, 0xf0,
-	0xbe, 0x94, 0x30, 0x44, 0x02, 0xc5, 0x63, 0x4a, 0x0c, 0x42, 0x16, 0x5c, 0x1c, 0x30, 0xd7, 0x08,
-	0x89, 0x42, 0x94, 0xa0, 0xb9, 0x0e, 0x87, 0x4e, 0x27, 0x7d, 0x2e, 0x91, 0xe4, 0xfc, 0x5c, 0xbd,
-	0xd4, 0x8a, 0xc4, 0xdc, 0x82, 0x9c, 0x54, 0xbd, 0xf4, 0xa2, 0x82, 0xe4, 0x94, 0xd4, 0xdc, 0x7c,
-	0x27, 0x7e, 0x84, 0xdb, 0x02, 0x40, 0x71, 0x12, 0xc0, 0xb8, 0x88, 0x89, 0xd9, 0xc3, 0x27, 0x3c,
-	0x89, 0x0d, 0x1c, 0x45, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0xbd, 0xdd, 0xfb, 0xac, 0xbd,
-	0x01, 0x00, 0x00,
+	// 274 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x51, 0xc1, 0x4a, 0xc3, 0x40,
+	0x10, 0x75, 0xd3, 0x56, 0xed, 0x5c, 0xaa, 0x43, 0xb5, 0x4b, 0x41, 0x28, 0x39, 0xe5, 0xb4, 0x82,
+	0x1e, 0x45, 0xa4, 0xbd, 0xe8, 0xc1, 0x43, 0x49, 0x41, 0x8f, 0xb2, 0xa6, 0x83, 0x06, 0x9a, 0xec,
+	0xba, 0xd9, 0x06, 0x3f, 0xc2, 0xaf, 0xf0, 0x4b, 0x25, 0x9b, 0xc4, 0xc4, 0x46, 0xe8, 0x6d, 0x77,
+	0x66, 0xde, 0x9b, 0xf7, 0xde, 0xc0, 0xe4, 0x49, 0x6e, 0xb6, 0xb4, 0xb2, 0xca, 0xd0, 0x8a, 0x4c,
+	0x1e, 0x47, 0x24, 0xb4, 0x51, 0x56, 0x61, 0x3f, 0x91, 0x71, 0xea, 0xdf, 0xc2, 0xa9, 0xeb, 0xb9,
+	0xa9, 0x90, 0x3e, 0xb6, 0x94, 0x59, 0x44, 0xe8, 0x6b, 0x69, 0xdf, 0x39, 0x9b, 0xb1, 0x60, 0x18,
+	0xba, 0x37, 0x8e, 0x61, 0x90, 0x17, 0x33, 0xdc, 0x73, 0xc5, 0xf2, 0xe3, 0x4b, 0xc0, 0x36, 0x3c,
+	0xd3, 0x2a, 0xcd, 0xe8, 0x5f, 0xfc, 0x05, 0x40, 0x64, 0x48, 0x5a, 0x5a, 0xbf, 0x48, 0x5b, 0x91,
+	0x0c, 0xab, 0xca, 0xdc, 0x22, 0x87, 0xa3, 0x9c, 0x4c, 0x16, 0xab, 0x94, 0xf7, 0x66, 0x2c, 0x18,
+	0x84, 0xf5, 0xd7, 0xbf, 0x83, 0xd1, 0x3d, 0xd9, 0xbd, 0xfa, 0x5a, 0x04, 0xde, 0x5f, 0x82, 0x00,
+	0x4e, 0x1a, 0x82, 0x4a, 0xe1, 0xaf, 0x1b, 0xd6, 0x72, 0x73, 0xf5, 0xc5, 0x00, 0x9a, 0xb8, 0x70,
+	0x0e, 0xd0, 0x98, 0xc3, 0x89, 0x28, 0x02, 0x13, 0x9d, 0xb4, 0xa6, 0xbc, 0xdb, 0x28, 0xb7, 0xf8,
+	0x07, 0x78, 0x03, 0xc7, 0xf5, 0x6e, 0x3c, 0x2b, 0xe7, 0x76, 0xcc, 0x4c, 0xcf, 0x77, 0xcb, 0x35,
+	0x78, 0x71, 0x09, 0xe3, 0x48, 0x25, 0x82, 0x3e, 0x65, 0xa2, 0x37, 0x24, 0xde, 0x8c, 0x8e, 0xd6,
+	0x94, 0xa8, 0xc5, 0xa8, 0xd1, 0xb8, 0x2c, 0x4e, 0xb9, 0x64, 0xdf, 0x5e, 0xef, 0xe1, 0xf1, 0xf9,
+	0xf5, 0xd0, 0x5d, 0xf6, 0xfa, 0x27, 0x00, 0x00, 0xff, 0xff, 0x23, 0x2c, 0x5b, 0xa4, 0xf4, 0x01,
+	0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -212,8 +253,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ValueStoreClient interface {
-	StoreValue(ctx context.Context, in *StoreValueRequest, opts ...grpc.CallOption) (*ValueResponse, error)
-	GetValue(ctx context.Context, in *GetValueRequest, opts ...grpc.CallOption) (*ValueResponse, error)
+	StoreValue(ctx context.Context, in *StoreValueRequest, opts ...grpc.CallOption) (*StoreValueResponse, error)
+	GetValue(ctx context.Context, in *GetValueRequest, opts ...grpc.CallOption) (*GetValueResponse, error)
 }
 
 type valueStoreClient struct {
@@ -224,8 +265,8 @@ func NewValueStoreClient(cc *grpc.ClientConn) ValueStoreClient {
 	return &valueStoreClient{cc}
 }
 
-func (c *valueStoreClient) StoreValue(ctx context.Context, in *StoreValueRequest, opts ...grpc.CallOption) (*ValueResponse, error) {
-	out := new(ValueResponse)
+func (c *valueStoreClient) StoreValue(ctx context.Context, in *StoreValueRequest, opts ...grpc.CallOption) (*StoreValueResponse, error) {
+	out := new(StoreValueResponse)
 	err := c.cc.Invoke(ctx, "/main.ValueStore/StoreValue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -233,8 +274,8 @@ func (c *valueStoreClient) StoreValue(ctx context.Context, in *StoreValueRequest
 	return out, nil
 }
 
-func (c *valueStoreClient) GetValue(ctx context.Context, in *GetValueRequest, opts ...grpc.CallOption) (*ValueResponse, error) {
-	out := new(ValueResponse)
+func (c *valueStoreClient) GetValue(ctx context.Context, in *GetValueRequest, opts ...grpc.CallOption) (*GetValueResponse, error) {
+	out := new(GetValueResponse)
 	err := c.cc.Invoke(ctx, "/main.ValueStore/GetValue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -244,8 +285,8 @@ func (c *valueStoreClient) GetValue(ctx context.Context, in *GetValueRequest, op
 
 // ValueStoreServer is the server API for ValueStore service.
 type ValueStoreServer interface {
-	StoreValue(context.Context, *StoreValueRequest) (*ValueResponse, error)
-	GetValue(context.Context, *GetValueRequest) (*ValueResponse, error)
+	StoreValue(context.Context, *StoreValueRequest) (*StoreValueResponse, error)
+	GetValue(context.Context, *GetValueRequest) (*GetValueResponse, error)
 }
 
 func RegisterValueStoreServer(s *grpc.Server, srv ValueStoreServer) {
