@@ -9,7 +9,8 @@ package main;
 
 service ValueStore {
   rpc StoreValue (StoreValueRequest) returns (StoreValueResponse) {}
-  rpc GetValue (GetValueRequest) returns (GetValueResponse) {}
+  rpc GetValueByPath (GetValueByPathRequest) returns (GetValueResponse) {}
+  rpc GetValueByUUID (GetValueByUUIDRequest) returns (GetValueResponse) {}
 }
 
 message StoreValueRequest {
@@ -18,16 +19,22 @@ message StoreValueRequest {
 }
 
 message StoreValueResponse {
-  string path = 1;
-  string created_at = 2;
-  int32 version = 3;
+  string uuid = 1;
+  string path = 2;
+  string created_at = 3;
+  int64 version = 4;
 }
 
-message GetValueRequest {
+message GetValueByPathRequest {
   string path = 1;
-  int32 version = 2;
+  int64 version = 2;
+}
+
+message GetValueByUUIDRequest {
+  string uuid = 1;
 }
 
 message GetValueResponse {
-  string value = 1;
+  string uuid = 1;
+  string value = 2;
 }

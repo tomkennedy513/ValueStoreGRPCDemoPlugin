@@ -24,10 +24,10 @@ func StoreValue(request *StoreValueRequest) *api.Secret {
 }
 
 
-func GetValue(request *GetValueRequest) *api.Secret {
+func GetValue(path string) *api.Secret {
 	client := getClient()
 
-	secret, err := client.Read(fmt.Sprintf("/secret/data/%s", request.Path))
+	secret, err := client.Read(fmt.Sprintf("/secret/data/%s", path))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -41,6 +41,6 @@ func getClient() *api.Logical {
 
 	}
 	client, _ := api.NewClient(&config)
-	client.SetToken("s.nKgT3V6gJs3gj8X6uTH466YV")
+	client.SetToken("s.7PpDWHNlxSz4cAkY3Lkn1UaN")
 	return client.Logical()
 }
