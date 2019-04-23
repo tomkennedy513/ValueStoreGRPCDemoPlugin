@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpcdemo";
+option java_outer_classname = "ValueStoreProto";
+option objc_class_prefix = "HLW";
+
+package proto;
+
+service ValueStore {
+  rpc SetValue (SetValueRequest) returns (SetValueResponse) {}
+  rpc GetValueByPath (GetValueByPathRequest) returns (GetValueResponse) {}
+  rpc GetValueById (GetValueByIdRequest) returns (GetValueResponse) {}
+  rpc DeleteValueByPath (DeleteValueByPathRequest) returns (DeleteValueResponse) {}
+  rpc DeleteValueById (DeleteValueByIdRequest) returns (DeleteValueResponse) {}
+
+}
+
+message SetValueRequest {
+  string path = 1;
+  string value = 2;
+}
+
+message SetValueResponse {
+  string id = 1;
+  string path = 2;
+  string created_at = 3;
+  int64 version = 4;
+}
+
+message GetValueByPathRequest {
+  string path = 1;
+}
+
+message GetValueByIdRequest {
+  string id = 1;
+}
+
+message GetValueResponse {
+  string id = 1;
+  string value = 2;
+}
+
+message DeleteValueByPathRequest {
+  string path = 1;
+}
+
+message DeleteValueByIdRequest {
+  string id = 1;
+}
+
+message DeleteValueResponse {
+  string id = 1;
+  string path = 2;
+}

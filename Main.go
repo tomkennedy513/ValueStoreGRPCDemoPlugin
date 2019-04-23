@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/pivotal/test/proto"
+	"github.com/pivotal/test/src"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -14,11 +16,11 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	s := Server{}
+	s := src.Server{}
 
 	grpcServer := grpc.NewServer()
 
-	RegisterValueStoreServer(grpcServer, &s)
+	proto.RegisterValueStoreServer(grpcServer, &s)
 
 	fmt.Println("grpc server running on port: ", port)
 

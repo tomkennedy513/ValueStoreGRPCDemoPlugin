@@ -1,28 +1,26 @@
-package main
+package src
 
 import (
 	"fmt"
 	"github.com/hashicorp/vault/api"
 )
 
-func StoreValue(request *StoreValueRequest) *api.Secret {
-
+func SetValue(path string, value string) *api.Secret {
 	client := getClient()
 
 	payload := map[string]interface{}{
 		"data": map[string]interface{}{
-			request.Path: request.Value,
+			path: value,
 		},
 		"options": map[string]interface{}{},
 	}
-
-	res, err := client.Write(fmt.Sprintf("/secret/data/%s", request.Path), payload)
+	res, err := client.Write(fmt.Sprintf("/secret/data/%s", path), payload)
 	if err != nil {
 		fmt.Println(err)
 	}
+
 	return res
 }
-
 
 func GetValue(path string) *api.Secret {
 	client := getClient()
@@ -31,16 +29,26 @@ func GetValue(path string) *api.Secret {
 	if err != nil {
 		fmt.Println(err)
 	}
+
 	return secret
 }
 
+func DeleteValue(path string) *api.Secret {
+	client := getClient()
+
+	secret, err := client.Delete(fmt.Sprintf("/secret/data/%s", path))
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return secret
+}
 
 func getClient() *api.Logical {
 	config := api.Config{
 		Address: "http://127.0.0.1:8200",
-
 	}
 	client, _ := api.NewClient(&config)
-	client.SetToken("s.7PpDWHNlxSz4cAkY3Lkn1UaN")
+	client.SetToken("s.JnYFmhJHECxAfyh5w5634WLr")
 	return client.Logical()
 }
